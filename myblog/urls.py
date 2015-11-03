@@ -20,8 +20,14 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
 ]
 
-#
+# myblog
 urlpatterns += patterns('myblog.views',
 	(r'^$','index'),
 	(r'^hello/$','hello'),
+)
+
+# user
+urlpatterns += patterns('myblog.user.views',
+	(r'^register$','register'),
+    (r'^register_success$','register_success'),
 )

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h1>注册页面</h1>
+    {% if form.errors %}
+        <p style="color: red;">
+            请修改下面的错误{{ form.errors|pluralize }}.
+        </p>
+    {% endif %}
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="field">
+            {{ form.username.errors }}
+            <laber for="username">用户名:</laber>
+            {{ form.username }}
+        </div>
+        <div class="field">
+            {{ form.password.errors }}
+            <laber for="password">密码:</laber>
+            {{ form.password }}
+        </div>
+        <div class="field">
+            {{ form.email.errors }}
+            <laber for="email">email:</laber>
+            {{ form.email }}
+        </div>
+        <div class="field">
+            <laber for="password">邀请码：</laber>
+            <input type="text" name="my_code" >
+        </div>
+        <input type="submit" value="注册">
+    </form>
+</body>
+</html>
