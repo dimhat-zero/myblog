@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>我的博客-首页</title>
+	<link rel="stylesheet" type="text/css" href="static/style.css">
+</head>
+<body>
+	{% include '_header_.html' %}
+	{% include '_nav_.html' %}
+
+	<div id="container">
+		<div id="alpha">
+			this is left
+			<ul>
+			{% for article in articles %}
+		    	<li>{{ article.title }} 作者：{{article.author}} 时间{{article.publication_date}}</li>
+		    {% endfor %}
+		    </ul>
+		</div>
+		<div id="beta">
+			this is right
+		</div>
+	</div>
+
+    {% include '_foot_.html' %}
+</body>
+</html>
