@@ -49,6 +49,7 @@ def login(request):
                 if u.password != cd['password']:
                     message = "密码错误"
                 else:
+                    request.session["user_id"] = u.id
                     request.session["username"] = u.username
                     request.session["nickname"] = u.nickname
                     return HttpResponseRedirect('/manage')

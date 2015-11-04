@@ -38,4 +38,5 @@ urlpatterns += patterns('myblog.user.views',
 # article
 urlpatterns += patterns('myblog.article.views',
     (r'^article/(\d+)$','article_detail'),
+    (r'^article/post$','post_article'),
 )

@@ -28,8 +28,8 @@ class Article(models.Model):
     tags = models.CharField(max_length=100, blank=True)  # 标签
     types = models.CharField(max_length=20)  # 文章类型
     status = models.CharField(max_length=20)  # 文章状态
-    read_count = models.IntegerField()  # 阅读总数
-    comment_count = models.IntegerField()  # 评论总数
+    read_count = models.IntegerField(default=0)  # 阅读总数
+    comment_count = models.IntegerField(default=0)  # 评论总数
 
     def __str__(self):
         return self.title
