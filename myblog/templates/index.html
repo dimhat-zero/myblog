@@ -10,15 +10,32 @@
 	{% include '_nav_.html' %}
 
 	<div id="container">
-		<div id="alpha">
-			this is left
+		<div class="left bloglist">
 			<ul>
 			{% for article in articles %}
-		    	<li>{{ article.title }} 作者：{{article.author}} 时间{{article.publication_date}}</li>
+				<li>
+					<h2>{{ article.title }}</h2>
+
+					<figure>
+						<img src="static/img/article_1.jpg" alt="{{ article.title }}">
+					</figure>
+					
+					<div class="content">
+						<p>{{ article.content }}</p>
+						<a title="{{ article.title }}" href="/article/{{ article.id }}" class="readmore">阅读全文>></a>
+					</div>
+					
+
+					<p class="dateview">
+						<span>{{article.publication_date|date:"Y-m-d" }}</span>
+						<span>作者：{{article.author}}</span>
+						<span>类型：{{article.types}}</span>
+					</p>
+		    	</li>
 		    {% endfor %}
 		    </ul>
 		</div>
-		<div id="beta">
+		<div class="right">
 			this is right
 		</div>
 	</div>

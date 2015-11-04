@@ -24,10 +24,18 @@ urlpatterns = [
 urlpatterns += patterns('myblog.views',
 	(r'^$','index'),
 	(r'^hello/$','hello'),
+    (r'^manage$','manage'),
 )
 
 # user
 urlpatterns += patterns('myblog.user.views',
 	(r'^register$','register'),
     (r'^register_success$','register_success'),
+    (r'^login$','login'),
+    (r'^json$','test_json'),
+)
+
+# article
+urlpatterns += patterns('myblog.article.views',
+    (r'^article/(\d+)$','article_detail'),
 )

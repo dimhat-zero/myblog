@@ -13,6 +13,10 @@ class RegisterForm(forms.Form):
     # clean_field校验
     def clean_my_code(self):
         my_code = self.cleaned_data['my_code']
-        if my_code != 'pass':
-            raise forms.validationError("邀请码不正确！")  # 邀请码不正确！
+        if my_code != 'guess':
+            raise forms.validationError("code is error")  # 邀请码不正确！
         return my_code
+
+class LoginForm(forms.Form):
+    username = forms.CharField(max_length=30)
+    password = forms.CharField(max_length=30)

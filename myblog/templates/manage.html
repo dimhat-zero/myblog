@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>管理我的博客</title>
+	<link rel="stylesheet" type="text/css" href="static/style.css">
+</head>
+<body>
+	{% include '_header_.html' %}
+	{% include '_nav_.html' %}
+
+	<div id="container">
+		欢迎主人：{{username}} <br/>
+		您的昵称是：{{nickname}}
+	</div>
+
+    {% include '_foot_.html' %}
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{article.title}}</title>
+	<link rel="stylesheet" type="text/css" href="/static/style.css">
+</head>
+<body>
+	{% include '_header_.html' %}
+	{% include '_nav_.html' %}
+
+	<div id="container">
+		<div class="left article">
+			<h1>{{article.title}}</h1>
+			<p>
+				{{article.content}}
+			</p>
+			
+		</div>
+		{% include '_right_.html' %}
+	</div>
+
+    {% include '_foot_.html' %}
+</body>
+</html>

@@ -1,10 +1,14 @@
 @charset "utf-8";
 /*base.css*/
+* {
+	margin: 0;
+	padding: 0;
+}
 body{
 	margin: 0;
 	padding: 0;
 	background-color: #3A3A38;
-	font: 16px "宋体", Arial, Helvetica, sans-serif; 
+	font: 12px "宋体", Arial, Helvetica, sans-serif;
 	color: #756F71;
 }
 header{
@@ -13,6 +17,19 @@ header{
 	height: 80px;
 	position: relative;
 	overflow: hidden;
+}
+header .title{
+	float:left;
+	margin-left:20px;
+	margin-top:20px;
+	font-size: 30px;
+	font-weight:600;
+}
+header .homeImg{
+	width: 50px;
+	height:50px;
+	float:left;
+	margin-top:10px;
 }
 
 nav {
@@ -27,25 +44,38 @@ footer{
 	margin:auto;
 }
 
+a:link, a:visited {
+	text-decoration: none;
+	color: #333;
+}
+
 #container {
 	width:60%;
 	min-width:780px;
 	max-width: 1260px;
 	min-height: 1000px;
 	margin: 0 auto;
-	background-color: #f5f5d5;
+	background-color: white; /*#f5f5d5*/
 	padding: 1em;
+	border-radius: 10px;
 }
 
-#alpha{
+.text-overflow {
+    display:block;/*内联对象需加*/
+    word-break:keep-all;/* 不换行 */
+    white-space:nowrap;/* 不换行 */
+    overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
+    text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+}
+
+.left{
 	width: 64%;
 	min-width: 470px;
 	max-width: 740px;
 	margin-left: 3%;
 	float: left;
 }
-
-#beta{
+.right{
 	float: right;
 	width: 24%;
 	padding: 0.6em;
@@ -54,4 +84,123 @@ footer{
 	min-width: 180px;
 	max-width: 300px;
 	overflow: hidden;
+	background-color: black;
 }
+
+/* 博客列表css */
+.bloglist li{
+	list-style:none
+}
+.bloglist ul li h2{
+	margin: 20px 0 10px 0;
+	color: #333;
+}
+/* 文章插图 */
+.bloglist ul li figure{
+	float: left;
+	width: 183px;
+}
+.bloglist ul li figure img {
+	padding: 1px;
+	border: #f4f2f2 2px solid;
+	width: 175px;
+	border-radius: 10px;
+}
+.bloglist ul li figure img:hover {
+	padding: 1px;
+	border: #368CE0 2px solid;
+	width: 175px;
+	border-radius: 10px;
+}
+/* 文章内容 */
+.bloglist ul li .content{
+	float: left;
+	width: 520px;
+	margin: 10px 0px 0 15px;
+	line-height: 20px;
+}
+
+/* 阅读更多 */
+a.readmore{
+	background: #fd8a61;
+	color: #fff;
+	padding: 5px 10px;
+	float: right;
+	margin: 20px 0 0 0;
+}
+/* 时钟 */
+.dateview {
+	width: 695px;
+	overflow: hidden;
+	clear: both;
+	margin: 10px 0 0 0;
+	display: inline-block;
+	background: #f6f6f6 url(/static/img/time.jpg) 15px center no-repeat;
+	line-height: 26px;
+	height: 26px;
+	color: #838383;
+	padding-left: 25px;
+}
+.dateview span {
+	margin: 0 10px;
+}
+
+
+
+/*register页面*/
+.field{
+	line-height: 36px;
+}
+
+.field label{
+	float: left;
+	width: 100px;
+	text-align: right;
+}
+
+.field input{
+	width: 240px;
+	border-radius: 0px;
+	color: #222;
+	font-family: 微软雅黑;
+	font-size: 12px;
+	height: 30px;
+	text-indent: 1em;
+	background-color: #fff;
+	margin-left: 14px;
+	border: #ddd solid 1px;
+}
+.field input:focus{
+	border-color:bule;
+}
+input[type="submit"]{
+	padding: 5px 10px;
+	border: 1px;
+	margin: 0;
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 1.5;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer;
+	border-radius: 3px;
+	color: #fff;
+	background-color: #3071a9;
+	border-color: #285e8e;
+}
+
+/* article_detail */
+.article h1{
+	font-size: 25px;
+	margin: 20px 0;
+	text-align: center;
+	color: #333;
+}
+.article p{
+	line-height: 28px;
+	font-size: 14px;
+	text-indent: 2em;
+	color: #666;
+	margin-bottom: 5px;
+}
+

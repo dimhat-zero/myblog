@@ -2,38 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="static/style.css">
     <title></title>
 </head>
 <body>
-    <h1>注册页面</h1>
-    {% if form.errors %}
-        <p style="color: red;">
-            请修改下面的错误{{ form.errors|pluralize }}.
-        </p>
-    {% endif %}
+    {% include '_header_.html' %}
+    {% include '_nav_.html' %}
 
-    <form action="" method="POST">
-        {% csrf_token %}
-        <div class="field">
-            {{ form.username.errors }}
-            <laber for="username">用户名:</laber>
-            {{ form.username }}
-        </div>
-        <div class="field">
-            {{ form.password.errors }}
-            <laber for="password">密码:</laber>
-            {{ form.password }}
-        </div>
-        <div class="field">
-            {{ form.email.errors }}
-            <laber for="email">email:</laber>
-            {{ form.email }}
-        </div>
-        <div class="field">
-            <laber for="password">邀请码：</laber>
-            <input type="text" name="my_code" >
-        </div>
-        <input type="submit" value="注册">
-    </form>
+    <div id="container">
+        <h1>注册页面</h1>
+        {% if form.errors %}
+            <p style="color: red;">
+                请修改下面的错误{{ form.errors|pluralize }}.
+            </p>
+        {% endif %}
+
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="field">
+                {{ form.username.errors }}
+                <label for="username">用户名:</label>
+                {{ form.username }}
+            </div>
+            <div class="field">
+                {{ form.password.errors }}
+                <label for="password">密码:</label>
+                <input type="password" name="password">
+            </div>
+            <div class="field">
+                {{ form.email.errors }}
+                <label for="email">email:</label>
+                {{ form.email }}
+            </div>
+            <div class="field">
+                {{ form.my_code.errors }}
+                <label for="my_code">邀请码：</label>
+                {{ form.my_code }}
+            </div>
+            <input type="submit" value="注册" style="margin-left:300px;margin-top:10px;">
+        </form>
+    </div>
+
+    {% include '_foot_.html' %}
 </body>
 </html>

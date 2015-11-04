@@ -15,6 +15,9 @@ class User(models.Model):
     is_active = models.BooleanField(default=True)  # 是否激活
     is_staff = models.BooleanField(default=False)  # 是否管理员
 
+    def __str__(self):
+        return self.nickname
+
 
 class Article(models.Model):
     author = models.ForeignKey(User)  # 外键
@@ -28,6 +31,8 @@ class Article(models.Model):
     read_count = models.IntegerField()  # 阅读总数
     comment_count = models.IntegerField()  # 评论总数
 
+    def __str__(self):
+        return self.title
 
 class Comment(models.Model):
     article = models.ForeignKey(Article)  # 外键
@@ -37,3 +42,6 @@ class Comment(models.Model):
     email = models.EmailField()
     content = models.CharField(max_length=500)
     comment_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.author
