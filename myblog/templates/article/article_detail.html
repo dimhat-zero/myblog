@@ -1,26 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>{{article.title}}</title>
-	<link rel="stylesheet" type="text/css" href="/static/style.css">
-</head>
-<body>
-	{% include '_header_.html' %}
-	{% include '_nav_.html' %}
+{% extends "base.html" %}
+{% block title %}{{article.title}}{% endblock %}
 
-	<div id="container">
-		<div class="left article">
-			<article>
-				<h1>{{article.title}}</h1>
-				<p>
-					{{article.content}}
-				</p>
-			</article>
-		</div>
-		{% include '_right_.html' %}
-	</div>
-
-    {% include '_foot_.html' %}
-</body>
-</html>
+{% block content %}
+<div class="left article">
+	<article>
+		<h1>{{article.title}}</h1>
+		<p>发布时间：{{article.publication_date|date:"Y-m-d"}} 阅读数：{{article.read_count}} 评论数：{{article.comment_count}}</p>
+		<p>
+			{{article.content}}
+		</p>
+	</article>
+</div>
+{% include '_right_.html' %}
+{% endblock %}

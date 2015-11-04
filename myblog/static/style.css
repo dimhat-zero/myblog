@@ -58,6 +58,7 @@ a:link, a:visited {
 	background-color: white; /*#f5f5d5*/
 	padding: 1em;
 	border-radius: 10px;
+	overflow: auto;
 }
 
 .text-overflow {
@@ -147,7 +148,7 @@ a.readmore{
 
 
 
-/*register页面*/
+/* 表单参数样式 */
 .field{
 	line-height: 36px;
 }
@@ -170,6 +171,11 @@ a.readmore{
 	margin-left: 14px;
 	border: #ddd solid 1px;
 }
+.field textarea{
+	margin-left: 14px;
+	margin-top : 5px;
+}
+
 .field input:focus{
 	border-color:bule;
 }

@@ -1,41 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>发布文章</title>
-	<link rel="stylesheet" href="/static/style.css">
-</head>
-<body>
-	{% include '_header_.html' %}
-    {% include '_nav_.html' %}
-
-    <div id="container">
-    	<h1>发布文章</h1>
-		<form action="" method="POST">
-			{% csrf_token %}
-			<div class="field">
-				{{form.title.errors}}
-				<label for="title">标题</label>
-				{{form.title}}
-			</div>
-			<div class="field">
-				{{form.content.errors}}
-				<label for="title">内容</label>
-				{{form.content}}
-			</div>
-			<div class="field">
-				{{form.tags.errors}}
-				<label for="title">标签，用,分割</label>
-				{{form.tags}}
-			</div>
-			<div class="field">
-				{{form.types.errors}}
-				<label for="types">文章分类</label>
-				{{form.types}}
-			</div>
-			<input type="submit" value="发表">
-		</form>
+{% extends "base.html" %}
+{% block title %}发布文章{% endblock %}
+{% block content %}
+<h1>发布文章</h1>
+<form action="" method="POST">
+	{% csrf_token %}
+	<div class="field">
+		{{form.title.errors}}
+		<label for="title">标题</label>
+		{{form.title}}
 	</div>
-	{% include '_foot_.html' %}
-</body>
-</html>
+	<div class="field">
+		{{form.content.errors}}
+		<label for="title">内容</label>
+		{{form.content}}
+	</div>
+	<div class="field">
+		{{form.tags.errors}}
+		<label for="title">标签，用,分割</label>
+		{{form.tags}}
+	</div>
+	<div class="field">
+		{{form.types.errors}}
+		<label for="types">文章分类</label>
+		{{form.types}}
+	</div>
+	<input type="submit" value="发表" style="margin-left:300px;">
+</form>
+{% endblock %}

@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from myblog.models import User, Article, Comment

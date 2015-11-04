@@ -1,0 +1,18 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="/static/style.css">
+</head>
+<body>
+    {% include '_header_.html' %}
+	{% include '_nav_.html' %}
+
+    <div id="container">
+        {% block content %}{% endblock %}
+	</div>
+
+    {% include '_foot_.html' %}
+</body>
+</html>

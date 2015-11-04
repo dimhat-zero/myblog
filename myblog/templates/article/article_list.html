@@ -1,21 +1,11 @@
 {% extends "base.html"%}
-{% block title %}我的博客-首页{% endblock %}
+{% block title %}我的博客管理-文章列表{% endblock %}
 {% block content %}
 <div class="left bloglist">
 	<ul>
 	{% for article in articles %}
 		<li>
-			<h2>{{ article.title }}</h2>
-
-			<figure>
-				<img src="static/img/article_1.jpg" alt="{{ article.title }}">
-			</figure>
-
-			<div class="content">
-				<p>{{ article.content }}</p>
-				<a title="{{ article.title }}" href="/articles/{{ article.id }}" class="readmore">阅读全文>></a>
-			</div>
-
+			<h2><a title="{{ article.title }}" href="/articles/{{ article.id }}">{{ article.title }}</a></h2>
 
 			<p class="dateview">
 				<span>{{article.publication_date|date:"Y-m-d" }}</span>
@@ -26,6 +16,10 @@
 			</p>
 		</li>
 	{% endfor %}
+    <div id="fenye">
+        <a href="">上一页</a>&nbsp;&nbsp;<a href="">第i页</a>&nbsp;&nbsp;<a href="">下一页</a>
+    </div>
+
 	</ul>
 </div>
 

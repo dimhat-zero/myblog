@@ -32,11 +32,11 @@ urlpatterns += patterns('myblog.user.views',
 	(r'^register$','register'),
     (r'^register_success$','register_success'),
     (r'^login$','login'),
-    (r'^json$','test_json'),
 )
 
 # article
 urlpatterns += patterns('myblog.article.views',
-    (r'^article/(\d+)$','article_detail'),
-    (r'^article/post$','post_article'),
+    (r'^articles/(\d+)$','article_detail'),
+    (r'^articles/post$','post_article'),
+    (r'^articles$','article_list'),
 )

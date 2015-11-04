@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from myblog.models import User
@@ -25,14 +26,11 @@ def register(request):
     return render_to_response('user/register.html', {'form': form},
                               context_instance=RequestContext(request))
 
+
 def register_success(request):
     assert request.method == 'GET'
     return render_to_response('user/register_success.html')
 
-def test_json(request):
-    u = User(username="json",password="json2")
-    str = json.dumps(u)
-    return HttpResponse(str)
 
 # login
 def login(request):
@@ -44,10 +42,10 @@ def login(request):
             try:
                 u = User.objects.get(username=cd['username'])
             except User.DoesNotExist:
-                message = "账号不存在"
+                message = u"用户名不存在"
             else:
                 if u.password != cd['password']:
-                    message = "密码错误"
+                    message = u"密码不正确"
                 else:
                     request.session["user_id"] = u.id
                     request.session["username"] = u.username
