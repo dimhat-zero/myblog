@@ -1,3 +1,12 @@
 ##myblog
 This is django project.
-It's for study python and python web development.
+It's for studying python web development.
+
+###User
+
+###Aritcle
+/article/(id) for detail
+/article for list
+
+###Comment
+
