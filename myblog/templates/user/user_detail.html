@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}用户详情{% endblock %}
+{% block content %}
+<div class="left">
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="field">
+            {{ form.username.errors }}
+            <label for="username">用户名:</label>
+            {{ form.username }}
+        </div>
+        <div class="field">
+            {{ form.password.errors }}
+            <label for="password">密码:</label>
+            <input type="password" name="password" value="{{form.password}}">
+        </div>
+        <div class="field">
+            {{ form.nickname.errors }}
+            <label for="nickname">昵称:</label>
+            {{ form.nickname }}
+        </div>
+        <div class="field">
+            {{ form.email.errors }}
+            <label for="email">email:</label>
+            {{ form.email }}
+        </div>
+        <div class="field">
+            {{ form.register_date.errors }}
+            <label for="register_date">注册时间：</label>
+            {{ form.register_date }}
+        </div>
+        <div class="field">
+            {{ form.is_active.errors }}
+            <label for="is_active">是否可用：</label>
+            {{ form.is_active }}
+        </div>
+        <div class="field">
+            {{ form.is_staff.errors }}
+            <label for="is_staff">是否管理员：</label>
+            {{ form.is_staff }}
+        </div>
+        <input type="submit" class="buleBtn" value="修改" style="margin-left:300px;margin-top:10px;">
+    </form>
+</div>
+{% include '_right_.html' %}
+{% endblock %}

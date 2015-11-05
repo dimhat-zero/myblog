@@ -1,48 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="/static/style.css">
-    <title>注册用户</title>
-</head>
-<body>
-    {% include '_header_.html' %}
-    {% include '_nav_.html' %}
+{% extends "base.html" %}
+{% block title %}注册页面{% endblock %}
+{% block content %}
+    <h1>注册页面</h1>
+    {% if form.errors %}
+        <p style="color: red;">
+            请修改下面的错误{{ form.errors|pluralize }}.
+        </p>
+    {% endif %}
 
-    <div id="container">
-        <h1>注册页面</h1>
-        {% if form.errors %}
-            <p style="color: red;">
-                请修改下面的错误{{ form.errors|pluralize }}.
-            </p>
-        {% endif %}
-
-        <form action="" method="POST">
-            {% csrf_token %}
-            <div class="field">
-                {{ form.username.errors }}
-                <label for="username">用户名:</label>
-                {{ form.username }}
-            </div>
-            <div class="field">
-                {{ form.password.errors }}
-                <label for="password">密码:</label>
-                <input type="password" name="password">
-            </div>
-            <div class="field">
-                {{ form.email.errors }}
-                <label for="email">email:</label>
-                {{ form.email }}
-            </div>
-            <div class="field">
-                {{ form.my_code.errors }}
-                <label for="my_code">邀请码：</label>
-                {{ form.my_code }}
-            </div>
-            <input type="submit" value="注册" style="margin-left:300px;margin-top:10px;">
-        </form>
-    </div>
-
-    {% include '_foot_.html' %}
-</body>
-</html>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="field">
+            {{ form.username.errors }}
+            <label for="username">用户名:</label>
+            {{ form.username }}
+        </div>
+        <div class="field">
+            {{ form.password.errors }}
+            <label for="password">密码:</label>
+            <input type="password" name="password">
+        </div>
+        <div class="field">
+            {{ form.email.errors }}
+            <label for="email">email:</label>
+            {{ form.email }}
+        </div>
+        <div class="field">
+            {{ form.my_code.errors }}
+            <label for="my_code">邀请码：</label>
+            {{ form.my_code }}
+        </div>
+        <div style="margin-left:100px;line-height:30px;display: inline-block;">已有账号？<a href="/login">登陆</a></div>
+        <input type="submit" class="buleBtn" value="注册" style="margin-left:100px;margin-top:10px;">
+    </form>
+{% endblock %}

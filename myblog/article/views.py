@@ -37,6 +37,10 @@ def article_list(request):
 
 
 def post_article(request):
+    user_id = request.session["user_id"]
+    print("haha %s" % user_id)
+    if(user_id==None):
+        return HttpResponseRedirect("/login")
     if (request.method == 'POST'):
         form = ArticleForm(request.POST)
         if form.is_valid():
@@ -46,7 +50,7 @@ def post_article(request):
                 content=cd["content"],
                 tags=cd["tags"],
                 types=cd["types"],
-                author=User(id=request.session["user_id"])
+                author=User(id=user_id)
             )
             article.save()
             return HttpResponseRedirect("/articles/%d" % article.id)

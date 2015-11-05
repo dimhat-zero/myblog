@@ -1,11 +1,31 @@
 {% extends "base.html" %}
 {% block title %}我的博客-后台管理{% endblock %}
 {% block content %}
-欢迎主人：{{username}} <br/>
-您的昵称是：{{nickname}}
+
+{% if message %}
+    <p style="color: red;">
+        {{message}}
+    </p>
+{% endif %}
+
+
+欢迎主人：<a href="/users/{{ request.session.user_id }}">{{ request.session.username }}</a>,
+您的昵称是：{{ request.session.nickname }}
+ <br/>
 
 <a href="/articles">文章管理</a>
 <a href="/articles/post">发布文章</a>
 <a href="/register">用户注册</a>
-<a href="/login">用户登录</a>
+
+<br/>
+{% if "user_id" in request.session %}
+    you are login
+    <a href="/logout">用户注销</a>
+{% else %}
+    you are logout
+    <a href="/login">用户登录</a>
+{% endif %}
+
+
+
 {% endblock %}

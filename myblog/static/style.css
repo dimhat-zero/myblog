@@ -179,7 +179,7 @@ a.readmore{
 .field input:focus{
 	border-color:bule;
 }
-input[type="submit"]{
+.buleBtn{
 	padding: 5px 10px;
 	border: 1px;
 	margin: 0;

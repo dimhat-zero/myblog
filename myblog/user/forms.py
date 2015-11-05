@@ -3,8 +3,8 @@ from django import forms
 
 
 class RegisterForm(forms.Form):
-    username = forms.CharField(max_length=30)
-    password = forms.CharField(max_length=30)
+    username = forms.CharField(min_length=3,max_length=30)
+    password = forms.CharField(min_length=3,max_length=30)
     email = forms.EmailField()
     my_code = forms.CharField(min_length=4, max_length=6)
 
@@ -17,6 +17,25 @@ class RegisterForm(forms.Form):
             raise forms.validationError("code is error")  # 邀请码不正确！
         return my_code
 
+
 class LoginForm(forms.Form):
     username = forms.CharField(max_length=30)
     password = forms.CharField(max_length=30)
+
+
+class ModifyForm(forms.Form):
+    password = forms.CharField(max_length=30)
+    nickname = forms.CharField(max_length=30)
+    email = forms.EmailField()
+    is_active = forms.BooleanField()
+    is_staff = forms.BooleanField()
+
+
+class UserForm(forms.Form):
+    username = forms.CharField(max_length=30)
+    password = forms.CharField(max_length=30)
+    nickname = forms.CharField(max_length=30)
+    email = forms.EmailField()
+    register_date = forms.DateField()
+    is_active = forms.BooleanField()
+    is_staff = forms.BooleanField()

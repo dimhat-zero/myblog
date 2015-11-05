@@ -13,7 +13,7 @@ Including another URLconf
     1. Add an import:  from blog import urls as blog_urls
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
-from django.conf.urls import patterns,include, url
+from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
 urlpatterns = [
@@ -22,21 +22,23 @@ urlpatterns = [
 
 # myblog
 urlpatterns += patterns('myblog.views',
-	(r'^$','index'),
-	(r'^hello/$','hello'),
-    (r'^manage$','manage'),
-)
+                        (r'^$', 'index'),
+                        (r'^hello/$', 'hello'),
+                        (r'^manage$', 'manage'),
+                        )
 
 # user
 urlpatterns += patterns('myblog.user.views',
-	(r'^register$','register'),
-    (r'^register_success$','register_success'),
-    (r'^login$','login'),
-)
+                        (r'^register$', 'register'),
+                        (r'^register_success$', 'register_success'),
+                        (r'^login$', 'login'),
+                        (r'^logout$', 'logout'),
+                        (r'^users/(\d+)$','user_detail'),
+                        )
 
 # article
 urlpatterns += patterns('myblog.article.views',
-    (r'^articles/(\d+)$','article_detail'),
-    (r'^articles/post$','post_article'),
-    (r'^articles$','article_list'),
-)
+                        (r'^articles/(\d+)$', 'article_detail'),
+                        (r'^articles/post$', 'post_article'),
+                        (r'^articles$', 'article_list'),
+                        )
