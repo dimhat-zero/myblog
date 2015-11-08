@@ -1,7 +1,12 @@
 {% extends "base.html" %}
 {% block title %}发布文章{% endblock %}
 {% block content %}
+
+{% if id %}
+<h1>修改文章</h1>
+{% else %}
 <h1>发布文章</h1>
+{% endif %}
 <form action="" method="POST">
 	{% csrf_token %}
 	<div class="field">
@@ -24,6 +29,11 @@
 		<label for="types">文章分类</label>
 		{{form.types}}
 	</div>
-	<input type="submit" value="发表" style="margin-left:300px;">
+	{% if id %}
+	<input type="submit" class="blueBtn" value="修改" style="margin-left:300px;">
+	{% else %}
+	<input type="submit" class="blueBtn" value="发表" style="margin-left:300px;">
+	{% endif %}
+
 </form>
 {% endblock %}

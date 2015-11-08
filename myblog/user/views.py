@@ -73,7 +73,7 @@ def logout(request):
 
 def user_detail(request,id):
     if request.method == 'GET':
-        u = User.objects.all().get(id=id)
+        u = User.objects.get(id=id)
         return render_to_response("user/user_detail.html",{'form':u})
     elif request.method == 'POST':
         form = ModifyForm(request.POST)

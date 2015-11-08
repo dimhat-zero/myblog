@@ -5,8 +5,10 @@
 	<ul>
 	{% for article in articles %}
 		<li>
-			<h2><a title="{{ article.title }}" href="/articles/{{ article.id }}">{{ article.title }}</a></h2>
-
+			<h2 style="float:left;"><a title="{{ article.title }}" href="/articles/{{ article.id }}">{{ article.title }}</a></h2>
+			<div style="float:right;margin-top:25px;">
+				<a href="/postedit/{{article.id}}">编辑</a>|<a href="/articles/{{article.id}}/delete">删除</a>
+			</div>
 			<p class="dateview">
 				<span>{{article.publication_date|date:"Y-m-d" }}</span>
 				<span>作者：{{article.author}}</span>
