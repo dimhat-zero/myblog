@@ -2,24 +2,38 @@
 {% block title %}我的博客管理-文章列表{% endblock %}
 {% block content %}
 <div class="left bloglist">
+	{{request.get_full_path}}
 	<ul>
-	{% for article in articles %}
+	{% for post in page.object_list %}
 		<li>
-			<h2 style="float:left;"><a title="{{ article.title }}" href="/articles/{{ article.id }}">{{ article.title }}</a></h2>
+			<h2 style="float:left;"><a title="{{ post.title }}" href="/articles/{{ post.id }}">{{ post.title }}</a></h2>
 			<div style="float:right;margin-top:25px;">
-				<a href="/postedit/{{article.id}}">编辑</a>|<a href="/articles/{{article.id}}/delete">删除</a>
+				<a href="/postedit/{{post.id}}">编辑</a>|<a href="/postdel/{{post.id}}">删除</a>
 			</div>
 			<p class="dateview">
-				<span>{{article.publication_date|date:"Y-m-d" }}</span>
-				<span>作者：{{article.author}}</span>
-				<span>类型：{{article.types}}</span>
-				<span>阅读数：{{article.read_count}}</span>
-				<span>评论数：{{article.comment_count}}</span>
+				<span>{{post.publication_date|date:"Y-m-d" }}</span>
+				<span>作者：{{post.author}}</span>
+				<span>类型：{{post.types}}</span>
+				<span>阅读数：{{post.read_count}}</span>
+				<span>评论数：{{post.comment_count}}</span>
 			</p>
 		</li>
 	{% endfor %}
-    <div id="fenye">
-        <a href="">上一页</a>&nbsp;&nbsp;<a href="">第i页</a>&nbsp;&nbsp;<a href="">下一页</a>
+    <div class="page">
+
+		{% if has_previous %}
+			<a href="?page={{previous_page_number}}">上一页</a>
+		{% else %}
+			<a href="#">上一页</a>
+		{% endif %}
+		&nbsp;
+		第{{page_no}}页，共{{page_tot}}页
+		&nbsp;
+		{% if has_next %}
+        	<a href="?page={{next_page_number}}" >下一页</a>
+		{% else %}
+			<a href="#" >下一页</a>
+		{% endif %}
     </div>
 
 	</ul>

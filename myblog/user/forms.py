@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 from django import forms
-
+from myblog.models import User
 
 class RegisterForm(forms.Form):
     username = forms.CharField(min_length=3,max_length=30)
@@ -23,19 +23,26 @@ class LoginForm(forms.Form):
     password = forms.CharField(max_length=30)
 
 
-class ModifyForm(forms.Form):
-    password = forms.CharField(max_length=30)
+class ModifyForm(forms.ModelForm):
     nickname = forms.CharField(max_length=30)
-    email = forms.EmailField()
-    is_active = forms.BooleanField()
-    is_staff = forms.BooleanField()
+    email = forms.EmailField(help_text="请输入您的邮箱")
+    is_active = forms.TypedChoiceField(
+        coerce=lambda x:x=='True',
+        choices=((False,'否'),(True,'是')),
+        widget=forms.RadioSelect
+    )
+    is_staff =  forms.TypedChoiceField(
+        coerce=lambda x:x=='True',
+        choices=((False,'否'),(True,'是')),
+        widget=forms.RadioSelect
+    )
+
+    class Meta:
+        model = User
+        fields={'nickname','email','is_active','is_staff'}
 
 
-class UserForm(forms.Form):
-    username = forms.CharField(max_length=30)
-    password = forms.CharField(max_length=30)
-    nickname = forms.CharField(max_length=30)
-    email = forms.EmailField()
-    register_date = forms.DateField()
-    is_active = forms.BooleanField()
-    is_staff = forms.BooleanField()
+class UserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = '__all__'

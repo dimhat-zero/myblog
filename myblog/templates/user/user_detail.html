@@ -8,12 +8,7 @@
         <div class="field">
             {{ form.username.errors }}
             <label for="username">用户名:</label>
-            {{ form.username }}
-        </div>
-        <div class="field">
-            {{ form.password.errors }}
-            <label for="password">密码:</label>
-            <input type="password" name="password" value="{{form.password}}">
+            {{ user.username }}
         </div>
         <div class="field">
             {{ form.nickname.errors }}
@@ -26,20 +21,22 @@
             {{ form.email }}
         </div>
         <div class="field">
-            {{ form.register_date.errors }}
-            <label for="register_date">注册时间：</label>
-            {{ form.register_date }}
-        </div>
-        <div class="field">
             {{ form.is_active.errors }}
             <label for="is_active">是否可用：</label>
-            {{ form.is_active }}
+            是<input type="radio" {% if user.is_active %}checked="checked"{%endif%} name="is_active" value="True">
+            否<input type="radio" {% if not user.is_active %}checked="checked"{%endif%} name="is_active" value="False">
         </div>
         <div class="field">
             {{ form.is_staff.errors }}
             <label for="is_staff">是否管理员：</label>
-            {{ form.is_staff }}
+            是<input type="radio" {% if user.is_staff %}checked="checked"{%endif%} name="is_staff" value="True">
+            否<input type="radio" {% if not user.is_staff %}checked="checked"{%endif%} name="is_staff" value="False">
         </div>
+        <div class="field">
+            <label for="register_date">注册时间：</label>
+            {{user.register_date|date:'Y-m-d'}}
+        </div>
+
         <input type="submit" class="blueBtn" value="修改" style="margin-left:300px;margin-top:10px;">
     </form>
 </div>

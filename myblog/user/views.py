@@ -2,9 +2,9 @@
 from django.http import HttpResponse, HttpResponseRedirect,Http404
 from django.shortcuts import render_to_response
 from myblog.models import User
-from myblog.user.forms import RegisterForm, LoginForm,ModifyForm
+from myblog.user.forms import RegisterForm, LoginForm,ModifyForm,UserForm
 from django.template import RequestContext
-
+from django.shortcuts import get_object_or_404
 
 # register
 def register(request):
@@ -49,15 +49,18 @@ def login(request):
             else:
                 if u.password != cd['password']:
                     message = u"密码不正确"
+                elif u.is_active==False:
+                    message = u"账号被冻结"
                 else:
                     request.session["user_id"] = u.id
                     request.session["username"] = u.username
                     request.session["nickname"] = u.nickname
+                    request.session["is_staff"] = u.is_staff
                     return HttpResponseRedirect('/manage')
     else:
         form = LoginForm()
-    return render_to_response("user/login.html", {'form': form, 'message': message},
-                              context_instance=RequestContext(request))
+        return render_to_response("user/login.html", {'form': form, 'message': message},
+                                  context_instance=RequestContext(request))
 
 
 # 退出登录
@@ -66,21 +69,28 @@ def logout(request):
         del request.session["user_id"]
         del request.session["username"]
         del request.session["nickname"]
+        del request.session["is_staff"]
     except:
         pass
     return HttpResponseRedirect("login")
 
 
 def user_detail(request,id):
-    if request.method == 'GET':
-        u = User.objects.get(id=id)
-        return render_to_response("user/user_detail.html",{'form':u})
-    elif request.method == 'POST':
+    u = get_object_or_404(User,pk=id)
+    if request.method == 'POST':
         form = ModifyForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
+            u.nickname = cd["nickname"]
+            u.email = cd["email"]
+            u.is_active = cd["is_active"]
+            u.is_staff = cd["is_staff"]
+            u.save()
+            return HttpResponseRedirect("/users/%s" %id)
     else:
-        raise Http404()
+        form = ModifyForm(instance=u)
+    return render_to_response("user/user_detail.html",{'form':form,'user':u},
+                                  context_instance=RequestContext(request))
 
 def user_list(request):
     pass

@@ -32,8 +32,21 @@ header .homeImg{
 	margin-top:10px;
 }
 
+
+.toolbar{
+    font-size: 12px;
+    padding: 0;
+    color: #999;
+    font-family: "Helvetica", "Tahoma, Arial", "sans-serif";
+    font-size: 0.75em;
+    color: #333;
+    line-height: 1.5em;
+    height: 40px;
+    background: #48525e;
+    border-bottom: none;
+}
 nav {
-	
+
 }
 
 footer{
@@ -42,6 +55,10 @@ footer{
 	border-top: #E8E8E8 1px solid ; 
 	width:1000px; 
 	margin:auto;
+}
+
+.errorlist{
+	color:red !important;
 }
 
 a:link, a:visited {
@@ -157,6 +174,7 @@ a.readmore{
 	float: left;
 	width: 100px;
 	text-align: right;
+	margin-right: 14px;
 }
 
 .field input{
@@ -168,11 +186,19 @@ a.readmore{
 	height: 30px;
 	text-indent: 1em;
 	background-color: #fff;
-	margin-left: 14px;
 	border: #ddd solid 1px;
 }
+.field input[type="checkbox"]{
+	width:15px;
+	height:auto;
+}
+.field input[type="radio"]{
+	width:15px;
+	height:auto;
+	vertical-align: middle;
+}
+
 .field textarea{
-	margin-left: 14px;
 	margin-top : 5px;
 }
 
@@ -210,3 +236,9 @@ a.readmore{
 	margin-bottom: 5px;
 }
 
+.page {
+    margin: 20px 0 0 0;
+    text-align: center;
+    width: 100%;
+    overflow: hidden;
+}

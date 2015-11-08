@@ -6,8 +6,9 @@
 	<link rel="stylesheet" type="text/css" href="/static/style.css">
 </head>
 <body>
+    {% include '_nav_.html' %}
     {% include '_header_.html' %}
-	{% include '_nav_.html' %}
+
 
     <div id="container">
         {% block content %}{% endblock %}
