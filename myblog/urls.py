@@ -23,6 +23,7 @@ urlpatterns = [
 # myblog
 urlpatterns += patterns('myblog.views',
                         (r'^$', 'index'),
+                        (r'^index$', 'index'),
                         (r'^hello/$', 'hello'),
                         (r'^manage$', 'manage'),
                         )
@@ -44,3 +45,7 @@ urlpatterns += patterns('myblog.article.views',
                         (r'^postdel/(\d+)$','post_del'),
                         (r'^postlist$', 'post_list'),
                         )
+
+# comment
+urlpatterns += patterns('myblog.comment.views',
+                        (r'^commentadd/(\d+)$', 'comment_add'),)

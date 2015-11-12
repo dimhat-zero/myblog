@@ -6,7 +6,7 @@ from django.template import RequestContext
 
 # 首页，显示所有文章
 def index(request):
-    return render_to_response('index.html', {'articles': Article.objects.all()})
+    return render_to_response('index.html', {'articles': Article.objects.all()},context_instance=RequestContext(request))
 
 
 def hello(request):

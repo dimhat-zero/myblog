@@ -5,10 +5,28 @@
 <div class="left article">
 	<article>
 		<h1>{{article.title}}</h1>
-		<p>发布时间：{{article.publication_date|date:"Y-m-d"}} 阅读数：{{article.read_count}} 评论数：{{article.comment_count}}</p>
+		<p>发布时间：{{article.publication_date|date:"Y-m-d"}} 阅读数：{{article.read_count}} 评论数：{{article.comment_count}}
+			{%if "user_id" in request.session%}
+			<span style="float:right">
+			<a href="/postedit/{{article.id}}">编辑文章</a>
+			<a href="/postdel/{{article.id}}">删除文章</a>
+			</span>
+			{%endif%}
+		</p>
+
 		<p>
 			{{article.content}}
 		</p>
+
+		<br/>
+		<div id="comment">
+			<h2>评论区：</h2>
+			<ul>
+			{% for comment in comments %}
+			<li>{{comment.content}}</li>
+			{% endfor %}
+			</ul>
+		</div>
 	</article>
 </div>
 {% include '_right_.html' %}

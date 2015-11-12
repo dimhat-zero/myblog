@@ -22,7 +22,7 @@
 				<span>作者：{{article.author}}</span>
 				<span>类型：{{article.types}}</span>
 				<span>阅读数：{{article.read_count}}</span>
-				<span>评论数：{{article.comment_count}}</span>
+				<a href="/articles/{{article.id}}#comment"><span>评论数：{{article.comment_count}}</span></a>
 			</p>
 		</li>
 	{% endfor %}

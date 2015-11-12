@@ -1,4 +1,8 @@
 <header>
-	<a href="/"><img src="/static/img/home.png" class="homeImg"></a>
+	{% if request.session.user_id %}
+	<a href="/manage"><img src="/static/img/home.png" class="homeImg"></a>
+	{% else %}
+	<a href="/index"><img src="/static/img/home.png" class="homeImg"></a>
+	{% endif %}
 	<p class="title">欢迎来到 dimhat 博客</p>
 </header>

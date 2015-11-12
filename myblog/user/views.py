@@ -59,7 +59,8 @@ def login(request):
                     return HttpResponseRedirect('/manage')
     else:
         form = LoginForm()
-        return render_to_response("user/login.html", {'form': form, 'message': message},
+
+    return render_to_response("user/login.html", {'form': form, 'message': message},
                                   context_instance=RequestContext(request))
 
 

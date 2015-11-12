@@ -20,7 +20,8 @@ def article_detail(request, id):
         else:
             article.read_count += 1
             article.save()
-        return render_to_response('article/article_detail.html', {'article': article})
+        return render_to_response('article/article_detail.html', {'article': article},
+                                  context_instance=RequestContext(request))
     else:
         raise Http404
 
