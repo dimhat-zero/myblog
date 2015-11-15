@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import render_to_response
-from myblog.models import Article, User
+from myblog.models import Article, User,Comment
 from myblog.article.forms import ArticleForm
 from django.template import RequestContext
 from django.shortcuts import get_object_or_404
@@ -13,14 +13,12 @@ def article_detail(request, id):
         # update form
         pass
     elif request.method == 'GET':
-        try:
-            article = Article.objects.get(id=id)
-        except Article.DoesNotExist:
-            raise Http404
-        else:
-            article.read_count += 1
-            article.save()
-        return render_to_response('article/article_detail.html', {'article': article},
+        article = get_object_or_404(Article,pk=id)
+        article.read_count += 1
+        article.save()
+
+        comments = Comment.objects.filter(article__id=int(id))
+        return render_to_response('article/article_detail.html', {'article': article,'comments':comments},
                                   context_instance=RequestContext(request))
     else:
         raise Http404

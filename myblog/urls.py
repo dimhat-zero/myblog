@@ -48,4 +48,4 @@ urlpatterns += patterns('myblog.article.views',
 
 # comment
 urlpatterns += patterns('myblog.comment.views',
-                        (r'^commentadd/(\d+)$', 'comment_add'),)
+                        (r'^comments/(\d+)$', 'comment_add'),)

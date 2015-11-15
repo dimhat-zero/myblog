@@ -268,7 +268,7 @@ a.readmore{
 }
 
 .comment_body {
-    margin-left: 50px;
+    /*margin-left: 50px;*/
     line-height: 20px;
     padding: 5px;
     min-height: 35px;
@@ -276,4 +276,29 @@ a.readmore{
 
 .comment_reply {
     margin-left: 50px;
+}
+
+.commentleft {
+    float: left;
+    display: block;
+    width: 80px;
+}
+.commentright {
+    display: block;
+    margin-left: 90px;
+}
+.commentform li {
+    margin: 0px;
+    list-style-type: none;
+}
+
+.commentform .comment_btn {
+    width: 85px;
+    height: 26px;
+    margin: 10px 0 0 90px;
+    border: none;
+    background: url(/static/img/submit_bg.gif) no-repeat 0 0;
+    color: #666;
+    font: normal 12px/26px Arial, Helvetica, sans-serif;
+    text-align: center;
 }

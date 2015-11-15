@@ -23,6 +23,7 @@
 			<div id="comment_title" class="panel_head">
         		<span class="see_comment">查看评论</span><a name="comments"></a>
 			</div>
+			<!-- 展示评论 -->
 			<div id="comment_list">
 				{% for comment in comments %}
 				<dl class="comment_item">
@@ -39,16 +40,50 @@
 						</span>
 					</dt>
 					<dd class="comment_body">{{comment.content}}</dd>
-
+					<!--
 					<dl class="comment_item comment_reply">
 						<dt class="comment_head">回复头</dt>
 						<dd class="comment_body"></dd>
 					</dl>
+					-->
 				</dl>
 				{% endfor %}
 				<div class="clear"></div>
 			</div>
-			<div id="comment_form"></div>
+			<!-- 回复评论 -->
+			<div id="comment_form">
+				<form action="/comments/{{article.id}}" method="POST">
+					{% csrf_token %}
+					<div class="commentform">
+						<div class="panel_head">发表评论</div>
+						<ul>
+							<li class="commentleft">用 户 名：</li>
+							<li class="commentright">
+								<input type="text" name="author" value="{{request.session.nickname}}">
+							</li>
+						</ul>
+						<ul>
+							<li class="commentleft">邮 箱：</li>
+							<li class="commentright">
+								<input type="text" name="email" value="123@qq.com">
+							</li>
+						</ul>
+						<ul>
+							<li class="commentleft">评论内容：</li>
+							<li class="commentright" style="position:relative;">
+
+								<textarea class="comment_content" name="content" id="content" style="width:400px; height: 200px;"></textarea>
+							</li>
+						</ul>
+						<ul>
+							<input type="hidden" id="comment_parent_id" name="comment_parent_id">
+							<input type="hidden" id="user_id" name="user_id" value="{{request.session.user_id}}">
+							<input type="submit" class="comment_btn" value="提交">&nbsp;&nbsp;
+							<span id="tip_comment" style="color: Red; display: none;"></span>
+						</ul>
+					</div>
+				</form>
+			</div>
 
 		</div>
 	</article>
