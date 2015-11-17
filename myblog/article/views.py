@@ -6,8 +6,9 @@ from myblog.article.forms import ArticleForm
 from django.template import RequestContext
 from django.shortcuts import get_object_or_404
 from django.core.paginator import Paginator
+from markdown import markdown
 
-
+# 文章详情
 def article_detail(request, id):
     if request.method == 'POST':
         # update form
@@ -23,7 +24,7 @@ def article_detail(request, id):
     else:
         raise Http404
 
-
+# 文章管理列表
 def post_list(request):
     page_no = request.GET.get('page', '1')
     per_page = request.GET.get('per_page', '10')
@@ -44,7 +45,8 @@ def post_list(request):
 
     return render_to_response('article/post_list.html', RequestContext(request, locals()))
 
-
+# get请求是增加页面
+# post请求是增加表单
 def post_add(request):
     user_id = request.session["user_id"]
     if (user_id == None):
@@ -68,6 +70,8 @@ def post_add(request):
                               context_instance=RequestContext(request))
 
 
+# get请求是修改页面
+# post请求是修改表单
 def post_mod(request, id):
     user_id = request.session["user_id"]
     if user_id == None:
@@ -94,6 +98,7 @@ def post_mod(request, id):
                               context_instance=RequestContext(request))
 
 
+#删除文章
 def post_del(request, id):
     user_id = request.session["user_id"]
     if user_id == None:

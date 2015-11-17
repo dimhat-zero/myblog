@@ -2,16 +2,16 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+from django.shortcuts import get_object_or_404
 from myblog.comment.forms import CommentForm
 from myblog.models import Comment,Article,User
 
 def comment_add(request,id):
+    article = get_object_or_404(Article,pk=id)
     #add comment
     if request.method=='POST':
         form = CommentForm(request.POST)
-        print("is be")
         if form.is_valid():
-            print("is ok")
             cd = form.cleaned_data
             #comment_parent=Comment(id=cd["comment_parent_id"]),
             post = Comment(
@@ -25,6 +25,8 @@ def comment_add(request,id):
                 post.comment_parent = Comment(id=cd["comment_parent_id"])
 
             post.save()
+            article.comment_count+=1
+            article.save()
 
         print("%r" % form.errors)
 

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block title %}{{article.title}}{% endblock %}
-
+{% load custom_markdown %}
 {% block content %}
 <div class="left article">
 	<article>
@@ -15,7 +15,7 @@
 		</p>
 
 		<p>
-			{{article.content}}
+			{{article.content|custom_markdown }}
 		</p>
 
 		<br/>
@@ -30,7 +30,7 @@
 					<dt class="comment_head" floor="1">
 						{{forloop.counter}}楼
 						<span class="user">
-							<a class="username" href="/{{comment.user_id}}" target="_blank">{{comment.author}}</a>
+							<a class="username" href="/users/{{comment.user_id}}" target="_blank">{{comment.author}}</a>
 							<span class="ptime">{{comment.comment_date|date:"Y-m-d"}}</span>
 							<a href="#reply" class="cmt_btn reply" title="回复">[回复]</a>
 							<span class="comment_manage" style="display: none;" commentid="5607237" username="mada26">
@@ -88,5 +88,12 @@
 		</div>
 	</article>
 </div>
+<script>
+$(document).ready(function() {
+  $('code').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+});
+</script>
 {% include '_right_.html' %}
 {% endblock %}
